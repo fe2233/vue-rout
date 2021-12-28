@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>销量数据后台</title>
+
+<link rel="stylesheet" href="index.css"/>
+<script type="text/javascript" src="js/vue.js"></script>				<!--vue（可能）不符合amd规范，不能通过require引入，因此直接引入-->
+<script type="text/javascript" src="js/vue-router.js"></script>
+<script type="text/javascript" src="js/vue-resource.js"></script>
+<script type="text/javascript" data-main="main" src="js/require.js"></script>
+</head>
+
+<body>
+<header>销量数据后台</header>
+<div id="content">
+  <div class="nav">
+    <router-link active-class="active" to="/add">添加数据</router-link>
+    <router-link active-class="active" to="/view">查看数据</router-link>
+	<router-link active-class="active" to="/change">修改数据</router-link>
+	<router-link active-class="active" to="/del">删除数据</router-link>
+  </div>
+  
+  <router-view></router-view>
+</div>
+</body>
+</html>
