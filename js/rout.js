@@ -1,7 +1,6 @@
 define(["jquery"], function() {
 	var baseUrl = "http://127.0.0.1:8080";
-	var list;
-	getList();
+	var list = [];
 	
 	var add = {
 		template: "<div class='re-box'><div><span>姓名</span><input type='text' id='name' v-model='name'/></div>"+
@@ -29,6 +28,15 @@ define(["jquery"], function() {
 						alert("数据已存在");
 					} else if(mes == "success") {
 						alert("提交成功");
+						var obj = {
+							id:list[list.length-1].id+1,
+							name:this.name,
+							month:this.month,
+							dones:this.dones,
+							doneCount:this.doneCount
+						};
+						list[list.length] = obj;
+						
 						this.name = "";
 						this.month = null;
 						this.dones = null;
@@ -127,6 +135,16 @@ define(["jquery"], function() {
 	];
 	
 	function getList() {
+		/*return new Promise(function(resolve) {										//promise法实现同步加载数据
+			Vue.http.get(baseUrl+'/getList').then(function(res){
+				if(res.body != null) {
+					list = res.body;
+					resolve();
+				}
+			},function(res){
+				console.log(res.status);
+			});
+		});*/
 		$.ajax({
             url:baseUrl+'/getList',
             type:'get',
@@ -142,6 +160,10 @@ define(["jquery"], function() {
             }
        });
 	}
+	/*async function aGetList() {
+		await getList();
+	}*/
+	
 	function delData(id, index) {
 		Vue.http.post(baseUrl+'/delData/'+id).then(function(res){
 			if(res.body == "success") {
@@ -152,6 +174,9 @@ define(["jquery"], function() {
 			console.log(res.status);
 		});
 	}
+	
+	getList();
+	//aGetList();
 	
 	new Vue({
 		el:"#content",
