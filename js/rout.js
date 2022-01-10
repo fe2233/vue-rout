@@ -50,7 +50,7 @@ define(["jquery"], function() {
 	};
 	var view = {
 		template: "<div class='data-box'><div class='title'><span>姓名</span><span>月份</span><span>成交数</span><span>成交额</span></div>"+
-			"<div class='data-item' v-for='item in datas'><span>{{item.name}}</span><span>{{item.month}}</span><span>{{item.dones}}</span><span>{{item.doneCount}}</span></div></div>",
+			"<div class='data-item' v-for='item in datas' :key='item.id'><span>{{item.name}}</span><span>{{item.month}}</span><span>{{item.dones}}</span><span>{{item.doneCount}}</span></div></div>",
 		data:function() {
 			return {
 				datas:list
@@ -59,7 +59,7 @@ define(["jquery"], function() {
 	};
 	var change = {
 		template: "<div class='data-box change'><div class='title'><span>姓名</span><span>月份</span><span>成交数</span><span>成交额</span></div>"+
-			"<div class='data-item' v-for='(item,index) in datas'><span>{{item.name}}</span><span>{{item.month}}</span><span>{{item.dones}}</span><span>{{item.doneCount}}</span><span class='change-s' @click='change(item.id, index)'>修改</span></div><div class='change-box'><div><span id='close' @click='closeChange'>x</span></div>"+
+			"<div class='data-item' v-for='(item,index) in datas' :key='item.id'><span>{{item.name}}</span><span>{{item.month}}</span><span>{{item.dones}}</span><span>{{item.doneCount}}</span><span class='change-s' @click='change(item.id, index)'>修改</span></div><div class='change-box'><div><span id='close' @click='closeChange'>x</span></div>"+
 			"<div class='input-box'><span>姓名</span><input type='text' id='name' v-model='name' disabled/></div>"+
 			"<div class='input-box'><span>月份</span><input type='number' id='month' v-model='month' disabled/></div>"+
 			"<div class='input-box'><span>成交数</span><input type='number' id='dones' v-model='dones'/></div>"+
@@ -114,7 +114,7 @@ define(["jquery"], function() {
 	};
 	var del = {
 		template: "<div class='data-box del'><div class='title'><span>姓名</span><span>月份</span><span>成交数</span><span>成交额</span></div>"+
-			"<div class='data-item' v-for='(item,index) in datas'><span>{{item.name}}</span><span>{{item.month}}</span><span>{{item.dones}}</span><span>{{item.doneCount}}</span><span class='del-s' @click='del(item.id,index)'>删除</span></div></div>",
+			"<div class='data-item' v-for='(item,index) in datas' :key='item.id'><span>{{item.name}}</span><span>{{item.month}}</span><span>{{item.dones}}</span><span>{{item.doneCount}}</span><span class='del-s' @click='del(item.id,index)'>删除</span></div></div>",
 		data:function() {
 			return {
 				datas:list
